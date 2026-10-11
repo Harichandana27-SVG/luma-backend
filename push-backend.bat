@@ -1,46 +1,46 @@
 @echo off
 title Push LUMA Backend to GitHub
 cls
-echo ===================================================
-echo     LUMA Backend - Automated GitHub Push Script
-echo     Target: https://github.com/Harichandana27/luma-backend
-echo ===================================================
+echo ===================================================================
+echo             LUMA Backend - Pushing to GitHub
+echo             Target: https://github.com/Harichandana27-SVG/luma-backend
+echo ===================================================================
 echo.
 
-set GH_USER=Harichandana27
+set GH_USER=Harichandana27-SVG
 
-echo Initializing git repository...
-git init
+cd /d "%~dp0"
 
 echo Configuring Git author identity...
-git config user.name "Harichandana27"
-git config user.email "harichandana27@users.noreply.github.com"
+git init
+git config user.name "Harichandana27-SVG"
+git config user.email "Harichandana27-SVG@users.noreply.github.com"
 
-echo Adding files...
+echo Adding all backend Java files...
 git add -A
-git commit -m "LUMA Backend - Spring Boot 3.2.4, Security 6, JWT, Vault Architecture"
+git commit -m "LUMA Backend - Spring Boot 3.2.4, Security 6, JWT, Vault Architecture" 2>nul
 git branch -M main
 git remote remove origin 2>nul
 git remote add origin https://github.com/%GH_USER%/luma-backend.git
 
 echo.
-echo Pushing files to https://github.com/%GH_USER%/luma-backend.git ...
-echo (If a GitHub sign-in prompt appears, click 'Sign in with browser')
+echo Pushing files to GitHub...
+echo (If a GitHub sign-in window appears, click 'Sign in with browser')
 echo.
-git push -u origin main
+git push -u origin main --force
 
 echo.
 if %ERRORLEVEL% EQU 0 (
-    echo ===================================================
-    echo [SUCCESS] Backend pushed to GitHub successfully!
-    echo Your Backend Link: https://github.com/%GH_USER%/luma-backend
-    echo ===================================================
+    echo ===================================================================
+    echo  [SUCCESS!] Backend code successfully pushed to GitHub!
+    echo.
+    echo  Backend GitHub Link:
+    echo  https://github.com/%GH_USER%/luma-backend
+    echo ===================================================================
 ) else (
-    echo ===================================================
-    echo If push failed, make sure:
-    echo 1. You created the repository 'luma-backend' on github.com
-    echo 2. You clicked 'Authorize' or signed in when prompted
-    echo ===================================================
+    echo ===================================================================
+    echo  If push failed, make sure you clicked 'Sign in with browser'
+    echo ===================================================================
 )
 echo.
 pause

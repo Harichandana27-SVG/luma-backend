@@ -5,6 +5,7 @@ target/
 .idea/
 *.iml
 .vscode/
-.DS_Store
+*.DS_Store
 uploads/
 luma-frontend/
+powershell.cmd
